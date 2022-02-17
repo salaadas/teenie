@@ -6,9 +6,10 @@ Another project for experiementing ui library
 
 - SDL2
 - SDL_Image
+- pkg-config
 
 ## Start guide
 
 ```console
-$ make -B && ./_experiment.debug
+$ make -B && ./_teenie.debug
 ```
