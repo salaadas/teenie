@@ -3,7 +3,7 @@
 #include "./graphics.h"
 #include "./globals.h"
 #include "./input.h"
-#include "./tiles/texture.h"
+#include "./texture.h"
 
 namespace {
     const int FPS = 60;

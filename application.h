@@ -2,7 +2,7 @@
 #define APPLICATION_H_
 
 #include "./graphics.h"
-#include "./tiles/texture.h"
+#include "./texture.h"
 
 class Application
 {

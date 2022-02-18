@@ -2,7 +2,7 @@
 #define TEXTURE_H_
 
 #include "SDL.h"
-#include "../graphics.h"
+#include "./graphics.h"
 
 class Texture
 {
@@ -14,6 +14,7 @@ class Texture
         ~Texture();
 
         void render_texture(Graphics &graphics, int dest_x, int dest_y);
+        SDL_Texture *emit_texture_spritesheet();
     private:
         SDL_Rect source_rect;
         SDL_Texture *texture_spritesheet;

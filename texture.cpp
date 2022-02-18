@@ -1,8 +1,8 @@
 #include "./texture.h"
 #include "SDL.h"
-#include "../graphics.h"
-#include "../ultilities/checkcode.h"
-#include "../globals.h"
+#include "./graphics.h"
+#include "./ultilities/checkcode.h"
+#include "./globals.h"
 
 Texture::Texture()
 {
@@ -37,4 +37,9 @@ void Texture::render_texture(Graphics &graphics, int dest_x, int dest_y)
     dest_rect.w = this->source_rect.w * globals::SPRITE_SCALE;
 
     graphics.blit_something(this->texture_spritesheet, &this->source_rect, &dest_rect);
+}
+
+SDL_Texture *Texture::emit_texture_spritesheet()
+{
+    return this->texture_spritesheet;
 }
