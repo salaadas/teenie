@@ -2,6 +2,7 @@
 #include "./globals.h"
 #include "./ultilities/checkcode.h"
 #include "./ultilities/color_converter.h"
+#include "./math/linalg.h"
 
 #include "SDL_image.h"
 
@@ -15,15 +16,15 @@ Graphics::Graphics()
     scp(this->window);
 
     this->renderer = SDL_CreateRenderer(
-        this->window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+        this->window, -1, SDL_RENDERER_ACCELERATED
     );
     scp(this->renderer);
     SDL_RenderSetLogicalSize(this->renderer, globals::WIDTH, globals::HEIGHT);
 
     SDL_Surface *pizza_surface = IMG_Load("assets/textures/pizza.png");
-    this->cursor = SDL_CreateColorCursor(pizza_surface, 0, 0);
-    scp(this->cursor);
-    SDL_SetCursor(this->cursor);
+    this->mouse = SDL_CreateColorCursor(pizza_surface, 0, 0);
+    scp(this->mouse);
+    SDL_SetCursor(this->mouse);
 }
 
 void Graphics::clear()
@@ -47,6 +48,11 @@ void Graphics::blit_something(SDL_Texture *texture, SDL_Rect *source_rect, SDL_R
     SDL_RenderCopy(this->renderer, texture, source_rect, dest_rect);
 }
 
+Vec2i Graphics::emit_mouse_coordinate()
+{
+    return this->mouse_coordinate;
+}
+
 SDL_Renderer *Graphics::emit_renderer()
 {
     return this->renderer;
@@ -64,7 +70,7 @@ SDL_Surface *Graphics::get_surface_from_filepath(const char *filepath)
 
 Graphics::~Graphics()
 {
-    SDL_FreeCursor(this->cursor);
+    SDL_FreeCursor(this->mouse);
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
 }

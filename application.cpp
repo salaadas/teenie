@@ -4,6 +4,7 @@
 #include "./globals.h"
 #include "./input.h"
 #include "./texture.h"
+#include "./math/linalg.h"
 
 namespace {
     const int FPS = 60;
@@ -27,9 +28,9 @@ void Application::game_loop()
     Input input;
 
     this->grass = Texture(game_graphics, "assets/textures/texture_tiles.png", 
-                        0, 0, 16, 16);
+                          0, 0, 16, 16);
     this->dirt = Texture(game_graphics, "assets/textures/texture_tiles.png",
-                        16, 0, 16, 16);
+                         16, 0, 16, 16);
 
     uint32_t LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -49,8 +50,19 @@ void Application::game_loop()
                 case SDL_KEYUP: {
                     input.handle_key_release(event);
                 }break;
+                case SDL_MOUSEBUTTONDOWN: {
+                    Vec2i m_coord = game_graphics.emit_mouse_coordinate();
+                    SDL_GetMouseState(&m_coord.x, &m_coord.y);
+                    if (event.button.button == SDL_BUTTON_LEFT) {
+                        printf("left clicked at: (%d; %d)\n", m_coord.x, m_coord.y);
+                    }
+                    if (event.button.button == SDL_BUTTON_RIGHT) {
+                        printf("right clicked: (%d; %d)\n", m_coord.x, m_coord.y);
+                    }
+                }break;
+                case SDL_MOUSEBUTTONUP: {
+                }
             }
-
             if (input.was_key_pressed(SDL_SCANCODE_ESCAPE)) {
                 this->quit = true;
             }
