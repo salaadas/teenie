@@ -16,6 +16,7 @@ class Application
         void game_loop();
 
         void render_all(Graphics &graphics);
+        void update_all(uint32_t elapsed_time);
 };
 
 #endif // APPLICATION_H_

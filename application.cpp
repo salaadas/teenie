@@ -67,7 +67,14 @@ void Application::game_loop()
         const uint32_t ELAPSED_TIME = CURRENT_TIME - LAST_UPDATE_TIME;
 
         this->render_all(game_graphics);
+        this->update_all(ELAPSED_TIME);
     }
+}
+
+void Application::update_all(uint32_t elapsed_time)
+{
+    // TODO: Implement update
+    elapsed_time = 0;
 }
 
 void Application::render_all(Graphics &graphics)
