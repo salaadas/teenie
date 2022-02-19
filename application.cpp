@@ -1,5 +1,5 @@
-#include "SDL.h"
 #include "./application.h"
+#include "SDL.h"
 #include "./graphics.h"
 #include "./globals.h"
 #include "./input.h"
@@ -26,11 +26,6 @@ void Application::game_loop()
 {
     Graphics game_graphics;
     Input input;
-
-    this->grass = Texture(game_graphics, "assets/textures/texture_tiles.png", 
-                          0, 0, 16, 16);
-    this->dirt = Texture(game_graphics, "assets/textures/texture_tiles.png",
-                         16, 0, 16, 16);
 
     uint32_t LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -81,8 +76,8 @@ void Application::render_all(Graphics &graphics)
     graphics.clear();
     // render entities/tiles after this line
 
-    this->grass.render_texture(graphics, 100, 100);
-    this->dirt.render_texture(graphics, 100 + 32, 100);
+    // TODO: Render dirt, grass, wall
+    // tiles.render_tile(graphics, "dirt", vec2is(200));
 
     // everything should be rendered by the time it reaches this comment
     graphics.flip();

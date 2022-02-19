@@ -3,6 +3,7 @@
 #include "./graphics.h"
 #include "./ultilities/checkcode.h"
 #include "./globals.h"
+#include "./math/linalg.h"
 
 Texture::Texture()
 {
@@ -13,13 +14,12 @@ Texture::~Texture()
 }
 
 Texture::Texture(Graphics &graphics, const char *file_path, 
-                int source_x, int source_y,
-                int width, int height)
+                 Vec2i source_id, Vec2i dimensions)
 {
-    this->source_rect.x = source_x;
-    this->source_rect.y = source_y;
-    this->source_rect.w = width;
-    this->source_rect.h = height;
+    this->source_rect.x = source_id.x * globals::SPRITE_SIZE;
+    this->source_rect.y = source_id.y * globals::SPRITE_SIZE;
+    this->source_rect.w = dimensions.x;
+    this->source_rect.h = dimensions.y;
 
     this->texture_spritesheet = SDL_CreateTextureFromSurface(
         graphics.emit_renderer(),
@@ -28,11 +28,11 @@ Texture::Texture(Graphics &graphics, const char *file_path,
     scp(this->texture_spritesheet);
 }
 
-void Texture::render_texture(Graphics &graphics, int dest_x, int dest_y)
+void Texture::render_texture(Graphics &graphics, Vec2i destination)
 {
     SDL_Rect dest_rect;
-    dest_rect.x = dest_x;
-    dest_rect.y = dest_y;
+    dest_rect.x = destination.x;
+    dest_rect.y = destination.y;
     dest_rect.h = this->source_rect.h * globals::SPRITE_SCALE;
     dest_rect.w = this->source_rect.w * globals::SPRITE_SCALE;
 

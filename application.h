@@ -2,7 +2,7 @@
 #define APPLICATION_H_
 
 #include "./graphics.h"
-#include "./texture.h"
+// #include "./tiles/tilegrid.h"
 
 class Application
 {
@@ -10,8 +10,7 @@ class Application
         Application();
         ~Application();
     private:
-        Texture grass, dirt; 
-
+        // TileGrid tiles;
         bool quit = false;
 
         void game_loop();

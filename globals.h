@@ -6,6 +6,7 @@ namespace globals {
     const int HEIGHT = 600;
     const int BACKGROUND_COLOR = 0x18181800;
     const int SPRITE_SCALE = 2;
+    const int SPRITE_SIZE = 16;
 }
 
 #endif // GLOBALS_H_

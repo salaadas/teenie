@@ -3,9 +3,7 @@
 #include "./ultilities/checkcode.h"
 #include "./ultilities/color_converter.h"
 #include "./math/linalg.h"
-
 #include "SDL_image.h"
-
 #include <stdio.h>
 
 Graphics::Graphics()
