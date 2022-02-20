@@ -2,7 +2,7 @@
 #define APPLICATION_H_
 
 #include "./graphics.h"
-// #include "./tiles/tilegrid.h"
+#include "./tiles/tilegrid.h"
 
 class Application
 {
@@ -10,7 +10,7 @@ class Application
         Application();
         ~Application();
     private:
-        // TileGrid tiles;
+        TileGrid tiles;
         bool quit = false;
 
         void game_loop();

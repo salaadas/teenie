@@ -12,7 +12,7 @@ Vec2i vec2i0()
 {
     return vec2i(0, 0);
 }
-Vec2i Vec2is(int x)
+Vec2i vec2is(int x)
 {
     return vec2i(x, x);
 }

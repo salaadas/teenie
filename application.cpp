@@ -5,6 +5,7 @@
 #include "./input.h"
 #include "./texture.h"
 #include "./math/linalg.h"
+#include "./tiles/tilegrid.h"
 
 namespace {
     const int FPS = 60;
@@ -25,6 +26,7 @@ Application::~Application()
 void Application::game_loop()
 {
     Graphics game_graphics;
+    this->tiles = TileGrid(game_graphics);
     Input input;
 
     uint32_t LAST_UPDATE_TIME = SDL_GetTicks();
@@ -84,7 +86,7 @@ void Application::render_all(Graphics &graphics)
     // render entities/tiles after this line
 
     // TODO: Render dirt, grass, wall
-    // tiles.render_tile(graphics, "dirt", vec2is(200));
+    this->tiles.render_tile(graphics, "grass", vec2is(200));
 
     // everything should be rendered by the time it reaches this comment
     graphics.flip();
