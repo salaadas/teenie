@@ -24,6 +24,7 @@ class TileGrid
         void render_tile(Graphics &graphics, const char *tile_name, Vec2i position);
     private:
         std::map<const char*, Texture, cmp_str> tiles;
+        void init_basic_tiles(Graphics &graphics);
 };
 
 #endif // TILEGRID_H_

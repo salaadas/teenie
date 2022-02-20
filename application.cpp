@@ -85,7 +85,6 @@ void Application::render_all(Graphics &graphics)
     graphics.clear();
     // render entities/tiles after this line
 
-    // TODO: Render dirt, grass, wall
     this->tiles.render_tile(graphics, "grass", vec2is(200));
 
     // everything should be rendered by the time it reaches this comment
